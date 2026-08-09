@@ -1,0 +1,14 @@
+# Go build output
+/bin/
+/dist/
+*.test
+*.out
+/agent
+
+# Container images / tarballs
+*.tar
+
+# local model / scratch / env
+*.gguf
+.env
+.DS_Store

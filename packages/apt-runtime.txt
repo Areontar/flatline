@@ -1,0 +1,66 @@
+# HALCTF runtime apt packages (Debian bookworm main).
+# Lines starting with # and blank lines are ignored (stripped before apt-get).
+# Curated lean: every entry backs a specialist prompt or a /skills playbook.
+# Tools NOT in Debian main (gobuster, ffuf) are built as static Go binaries in
+# the build stage instead. See Dockerfile.
+
+## --- core utils / shell plumbing ---
+ca-certificates
+ncurses-base      # terminfo db (silences pwntools' setupterm warning)
+curl
+wget
+jq
+file
+xxd
+binutils          # objdump, readelf, strings, nm - rev/forensics workhorses
+less
+procps
+iproute2
+iputils-ping
+netcat-openbsd
+socat
+openssh-client
+sshpass
+unzip
+p7zip-full
+xz-utils
+openssl
+bc
+
+## --- web ---
+nmap              # also recon
+sqlmap
+whatweb
+libnet-ssleay-perl   # perl SSL support for vendored nikto (see Dockerfile)
+# nikto: not in Debian bookworm; vendored from GitHub in the build stage instead.
+
+## --- recon ---
+sslscan
+dnsutils          # dig, nslookup, host  (bind9-dnsutils)
+ldap-utils        # ldapsearch - also AD
+
+## --- forensics / stego ---
+binwalk
+libimage-exiftool-perl   # exiftool
+steghide
+foremost
+poppler-utils     # pdftotext, pdfimages, pdfinfo
+
+## --- pwn / rev ---
+gdb
+strace
+ltrace
+checksec          # ELF protection summary (also via `pwn checksec`)
+
+## --- password ---
+john
+hydra
+
+## --- ad / windows ---
+smbclient            # smbclient + rpcclient
+samba-common-bin     # nmblookup, net - used by vendored enum4linux-ng
+krb5-user
+
+## --- python runtime (skills + pip tools) ---
+python3
+python3-pip

@@ -1,0 +1,16 @@
+# Keep the build context (and thus the image) lean and reproducible.
+docs/
+.git/
+.gitignore
+.superpowers/
+.claude/
+*.gguf
+bin/
+*.tar
+*.tar.gz
+.DS_Store
+**/.DS_Store
+# Go build/test artifacts - the image compiles from source in the build stage.
+*.test
+*.out
+coverage*

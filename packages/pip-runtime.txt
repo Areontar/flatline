@@ -1,0 +1,25 @@
+# HALCTF runtime pip packages (installed system-wide with --break-system-packages
+# --no-cache-dir on Debian bookworm). Comments/blanks stripped before install.
+# These cover tools not packaged (or stale) in Debian main.
+
+## --- http / scripting ---
+requests
+
+## --- pwn / rev / crypto (also misc) ---
+pwntools          # pwn, checksec, ROPgadget, cyclic, capstone/unicorn deps
+pycryptodome      # Crypto.* - RSA/AES/xor crypto challenges
+gmpy2             # fast bignum for crypto math
+sympy             # symbolic math for crypto
+hashid            # identify hash types before john/hydra
+
+## --- ad / windows ---
+impacket          # secretsdump, GetNPUsers, psexec, wmiexec, smbserver, ...
+smbmap            # quick share enumeration
+pyyaml            # runtime dep for the vendored enum4linux-ng script (see Dockerfile)
+bloodhound        # bloodhound-python: collect AD attack-path data over LDAP
+ldap3             # LDAP scripting
+# netexec (nxc) and enum4linux-ng are NOT cleanly pip-installable (their PyPI
+# names are squatted py2.7 packages). netexec is dropped from v1; enum4linux-ng
+# is vendored from GitHub in the build stage instead (see Dockerfile).
+pypsrp            # PowerShell remoting
+pywinrm           # WinRM
